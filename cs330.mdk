@@ -1,0 +1,223 @@
+[INCLUDE=style/acmart]
+
+Extended    : False
+Anon        : False
+TechReport  : True
+Logo        : False
+Submit      : False
+Todo        : True
+Tight       : False
+
+Title       : CS 330
+Sub Title   :
+TechNR      :
+Title Note  :
+
+css: clear
+css: style/style.css
+
+Short Title : &Title;
+
+Author      : Tim Whiting
+Affiliation : Brigham Young University
+Email       : tim@whitings.org
+
+
+Keywords    : CS 330
+
+Bibliography    : papers.bib
+Math Dpi        : 300
+Math Concurrency: 8
+xPackage        : trfrac
+Package         : graphicx
+Embed           : 1000
+
+prelinecorrection: [\setlength\preadjust{0.1em}]{input:texraw}
+
+.supplement {
+  replace: "&source;"
+}
+
+.tronly {
+  display:none;
+}
+
+.proof {
+  margin-top: 1em;
+  background-color: gainsboro;
+}
+
+@techreport .tronly {
+  display:block;
+}
+
+@submit .supplement {
+  replace: clear;
+  replace: "&source; in the tech report"
+}
+
+.intro1 {
+  display: none;
+}
+
+@calculate .nocalculate {
+  display: none;
+}
+
+@nocalculate .calculate {
+  display: none;
+}
+
+[INCLUDE=style/common-style]
+[INCLUDE=style/koka-style]
+
+
+~ HtmlOnly
+[TITLE]
+
+[TOC]
+~
+
+~TexRaw
+\author{Tim Whiting}
+\affiliation{
+  \institution{Brigham Young University}
+  \city{Provo}
+  \state{UT}
+  \country{USA}
+}
+\email{tim@whitings.org}
+
+\title{\mdtitle}
+%\subtitle{\mdsubtitle}
+\maketitle
+\def\shorttitle{\acmshorttitle}
+~
+
+~ tronly
+~~ texraw
+\makeatletter
+\fancypagestyle{firstpagestyle}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\small\thepage}%
+}
+\fancypagestyle{standardpagestyle}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\small\thepage}%
+}
+\makeatother
+\pagestyle{standardpagestyle}
+~~
+~
+
+~ MathDefs
+\newcommand{\gray}[1]{\colorbox{gainsboro}{\strut$#1$}}
+\newcommand{\tr}[1]{\lfloor #1\rfloor}
+\newcommand{\comm}{\mathbin{\triangleright}}
+
+\newcommand\under[2]{\underset{\raisebox{2mm}{$\scriptstyle #2$}}{#1}}
+\newcommand\inhx[2]{\under{#1}{\under{\uparrow}{#2}}}
+\newcommand\synx[2]{\under{#1}{\under{\downarrow}{#2}}}
+\newcommand\inh[1]{\under{#1}{\under\uparrow{\textsf{inh}}}}
+\newcommand\syn[1]{\under{#1}{\under\downarrow{\textsf{syn}}}}
+
+\newcommand\colonover[1]{\overset{\raisebox{-2mm}{$\scriptstyle #1$}}{:}}
+
+\newcommand\rigid[1]{\fbox{\ensuremath{#1}}}
+\newcommand\boxy[1]{\fbox{\ensuremath{#1}}}
+
+\newcommand\syminfer{\,:\,}
+\newcommand\symcheck{\,\colonover{\color{red}{\leftarrow}}\,}
+%\newcommand\syminfer{\,:\,}
+%\newcommand\symcheck{\,::\,}
+\newcommand\symboth{\,\colonover{\leftrightarrow}\,}
+\newcommand\lessmatch{\overset{\raisebox{-2mm}{$\scriptstyle\color{blue}\rightarrow$}}{\approx}}
+\newcommand\lesschkone{\overset{\raisebox{-2mm}{$\scriptstyle\color{red}\leftarrow$}}{\cong}}
+\newcommand\lesschkdeep{\overset{\raisebox{-2mm}{$\scriptstyle\color{red}\leftarrow$}}{\approx}}
+~
+
+# Introduction
+
+So you want to learn about programming languages?
+
+This semester you will learn:
+
+* How to write in a functional style
+* Fundamentals of programming languages (Build a language!)
+* Several features of modern programming languages
+
+## Schedule
+
+On Tuesdays we will be focused on understanding fundamentals of programming languages.
+
+We will be building an interpreter for the "BYU" programming language.
+
+On Thursdays we will be looking at modern programming languages and their features.
+
+
++--------------------+-------------------+-----------------------+--------------------+-------------------+-----------------------+
+| Tuesday   | Topic |  Assignment| Thursday  | Topic |  Assignment   |
++--------------------+-------------------+---------------------------+--------------------+-------------------+---------------------------+
+| N/A  | | | Sept 5th  | Syllabus / Intro  | |
++---+---+---+---+---+---+
+| Sept 10th | FP Lists / HOF | | Sept 12th | FP ADTs | |
++---+---+---+---+---+---+
+| Sept 17th | FP Extras | | Sept 19th | JS - Dynamic Types | |
++---+---+---+---+---+---+
+| Sept 24th | Writing a Parser | | Sept 26th | TS - Gradual Typing | |
++---+---+---+---+---+---+
+| Oct 1st | Evaluating Expressions | | Oct 3rd | Dart - Strong Typing | |
++---+---+---+---+---+---+
+| Oct 8th | Evaluating Functions | | Oct 10th | Rust - Memory Management | |
++---+---+---+---+---+---+
+| Oct 15th | Dynamic Scope | | Oct 17th | Scheme - Macros | |
++---+---+---+---+---+---+
+| Oct 22nd | Static Scope Binding | | Oct 24th | Haskell - Laziness | |
++---+---+---+---+---+---+
+| Oct 29th | Evaluating Loops | | Oct 31st | Haskell - Monads | |
++---+---+---+---+---+---+
+| Nov 5th | Implementing State | | Nov 7th | Haskell - ?? | |
++---+---+---+---+---+---+
+| Nov 12th | Desugaring Objects | | Nov 14th | Prolog - Logic / Relational Programming | |
++---+---+---+---+---+---+
+| Nov 19th | Type Checking | | Nov 21st | Koka - Algebraic Effects | |
++---+---+---+---+---+---+
+| Nov 26th | Implementing Control | | Nov 28th | Thanksgiving | |
++---+---+---+---+---+---+
+| Dec 3rd | Implementing GC | | Dec 5th | Koka - Algebraic Effects | |
++---+---+---+---+---+---+
+| Dec 10th | Implementing GC | | | | |
++---+---+---+---+---+---+
+
+
+## BYU language
+The BYU language is a simple programming language that will be used to demonstrate the concepts we learn in class.
+
+The syntax is as follows:
+~ mathpre
+X ::= x,y (identifiers)
+E ::= x | e0 op e1 | if e0 then e1 else e2 | while e0 do e1 | e0(e1, ..., en)
+~
+
+## Functional Programming
+We will be adhering to a pure functional programming style for our implementations in this class.
+
+In particular this means that we will not be using mutable state.
+
+To get started with functional programming in Splait, please go through the following tutorials:
+
+* [Intro to Splait](https://www.youtube.com/watch?v=ZoWPZpqSYt4&list=PLbdXd8eufjyX42OdF_QnDf4w9NcvWPAZr)
+* [How to Design Programs](https://www.youtube.com/watch?v=-5Al4TfaZ94&list=PLbdXd8eufjyXyreOq06tSPhJi1u-dqb0p)
+
+
+
+[BIB]
+
+&pagebreak;
+
+~ texraw
+\appendix
+~
+
+&pagebreak;
+

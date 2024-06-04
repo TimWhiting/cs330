@@ -1,0 +1,468 @@
+column {
+  vertical-align:top;
+}
+
+
+properties-format: **Properties\ &label;&theorem-endperiod;** &theorem-caption;
+
+Properties {
+  label: '[@properties]{.properties-label}';
+  before: '[&properties-format;]{.properties-before}';
+}
+
+Theorem,Proof,Lemma,Corrollary,Properties {
+  @theorem;
+  label: '[@theorem]{.theorem-label}';
+  margin-top:1ex;
+  margin-bottom:1ex;
+}
+
+.supplement {
+  replace: "Appendix &source;"
+}
+
+.boxed {
+  .mathpre;
+  display: block;
+  padding: 0.5ex;
+  border: 1px solid black;
+}
+
+body {
+  max-width: 200ex;
+}
+
+.typerule {
+  .boxed;
+  margin-bottom:-1.2em;
+  padding-bottom:-1ex;
+}
+
+.snippet {
+  margin-top: 0.75ex;
+}
+
+.preadjust {
+  tex-cmd-inner-before="\setlength\preadjust{0.1em}"
+}
+
+floating-format   : [Fig.]{padding-right:0.5ex}&label;[.]{padding-right:1.1ex}
+
+.Floating {
+  after: clear;
+  after: '&nl;[[&floating-format;]{.caption-before}[&caption;]{.caption-text}]{.figure-caption; html-elem:fig-caption}&nl;{tag:false}&nl;';
+}
+
+.figure-caption{
+  tex-cmd-outer-before:"\vspace{10pt}\par"
+}
+.caption-text,.caption-before {
+  font-family: sans-serif;
+  font-size: small;
+}
+
+Colorizer       : kokax
+
+
+.token.label    { color:navy; }
+.token.keyword.register { color:black; }
+.token.identifier.predefined  { color:navy; }
+.token.operator.extra { color:blue; }
+.token.identifier.namespace { color:royalblue; }
+
+.preadjust {
+  tex-inner: "\setlength\preadjust{0.7em}";
+}
+
+smallnegskip       : [\vspace{-0.5em}]{input:texraw}
+mednegskip         : [\vspace{-1em}]{input:texraw}
+bignegskip         : [\vspace{-1.5em}]{input:texraw}
+
+blockquote {
+  padding-left: -1em;
+  padding-right: -1em;
+  font-style: italic;
+}
+
+derive {
+  .mathpre;
+  .para-block;
+  input: mathpre;
+  replace: "/^([^\s]*)\s+/\rlap{\ensuremath{\1}}{\hspace*{2#em}} & /gm";
+}
+
+xderive {
+  .mathpre;
+  .para-block;
+  input: mathpre;
+  replace: "//^([^\s][^\s]*)\s+/\1 \;\; & \
+            //^\s+/ \quad & \
+            //gm";
+}
+
+
+.code2,.pre-fenced4 {
+  language:iris;
+}
+
+.code3 {
+  language:cppx;
+}
+
+pre {
+  replace: "/_([\dn])/\(xx|$_{\1}$\)/gi"
+}
+
+pre,.code2 {
+  replace: "//↦∗/↦✲\
+            //-∗/-✲\
+            //gm"
+}
+
+.code,pre {
+  replace: "//\bxhole\b/\($null$\)\
+            //\bsqhole\b/\(x|$\square$\)\
+            //\[\|/\($\llbracket$\)\
+            //\|\]/\($\rrbracket$\)\
+            //\bCC\[([^\]]*)\]/\($\mathbb{C}[$\1$]$\)\
+            //\bCC([\dknm])\[([^\]]*)\]/\($\mathbb{C}_{\1}[$\2$]$\)\
+            //\bNode\_(\d)/Node\($_{\1}$\)\
+            //λ/\($\lambda{}$\)\
+            //bBox/\($\Box$\)\
+            //===/\($\equiv$\)\
+            //gm"
+}
+
+.math-inline, .mathpre {
+  replace:"//\bSS(?![\dA-Za-z])/{\Sigma}\
+           //\bD(?![\dA-Za-z])/{\Delta}\
+           //\[(\w\w\w+)\]/[\rulename{#\1}]\
+           //\[(\w\w\w+)-(\w+)\]/[\rulename{#\1-#\2}]\
+           //\[\#(\w+)-(\w+)\]/\ref{#\1-#\2}\
+           //\[\#(\w+)-(\w+)-(\w+)\]/\ref{#\1-#\2-#\3}\
+           //\b([HSKE])(?![\dA-Za-z])/{\textsf{\1}}\
+           //\b([HSKE])(\d)(?![\d])/{\textsf{\1}_{\2}}\
+           //\bCC(?![\dA-Za-z])/\mathcal{C}\
+           //\bTT(?![\dA-Za-z])/\mathbb{T}\
+           //\bTTT(?![\dA-Za-z])/\mathcal{T}\
+           //\bTTTT(?![\dA-Za-z])/\widetilde{\mathcal{T}}\
+           //\bHHole(?![a-zA-Z])/\textsf{H}\
+           //\bhole(?![a-zA-Z])/\square{}\
+           //\bnull(?![a-zA-Z])/{\smallsquare}\
+           //\b([efvxyz])s(?![\dA-Za-z])/\overline{\1}\
+           //\b([efvxyz])([ijkn])(?![\dA-Za-z])/\1_{\2}\
+           //\bphi(?![\dA-Za-z])/\varphi{}\
+           //\bphis(?![\dA-Za-z])/\overline{\varphi}\
+           //\ba([knm\d](?![\dA-Za-z]))/\alpha_{\1}\
+           //\bb([knm\d](?![\dA-Za-z]))/\beta_{\1}\
+           //\b[ut]([knm\d])(?![\dA-Za-z])/\tau_{\1}\
+           //\b[ut]s(?![\dA-Za-z])/\overline{\tau}\
+           //\bs([knm\d])/\sigma_{\1}\
+           //\bp([knm\d])/\rho_{\1}\
+           //\bs(?![\dA-Za-z])/\sigma{}\
+           //\b[ut](?![\dA-Za-z])/\tau{}\
+           //\bg(?![\dA-Za-z])/\gamma{}\
+           //\bp(?![\dA-Za-z])/\rho{}\
+           //\bw(?![\dA-Za-z])/\omega{}\
+           //\bb(?![\dA-Za-z])/\beta{}\
+           //\bbs(?![\dA-Za-z])/\overline{\beta}\
+           //\boo\b/{\bullet}\
+           //\bo\b/{\circ}\
+           //\b00\b/{\cdot}\
+           //\bsub([knmi\d])/\theta_{\1}\
+           //\bcompose\b/comp\
+           //\bhole\b/\square{}\
+           //\blam\b\s+/\lambda{}\
+           //\|\-\>/\!\mapsto\!\
+           //\|\-d/\!\vdash_{\!*}\
+           //\|\-wf/\vdash_{\textsf{wf}}\!\!\
+           // \. /\cdot{}\
+           //\s*\^=\s*/{=}\
+           //:i/\syminfer{}\
+           //:c/\symcheck{}\
+           //:d/\symboth{}\
+           //\//\texttt{/}\!\
+           //<<=/\lessmatch{}\
+           //<\./\lesschkone{}\
+           //<~/\lesschkdeep{}\
+           //:~/\colonsim {}\
+           //<</\{\
+           //>>/\}\
+           //<</\llangle{}\
+           //>>/\rrangle{}\
+           //<>([\dnk])/\diamond_{\1}\
+           //<>/\diamond{}\
+           //\|>/\triangleright{}\
+           //===/\equiv{}\
+           //~=/{}\approx{}\
+           //≠/\neq{}\
+           //==/\cong{}\
+           //\s*!=\s*/\neq{}\
+           //\bfhat/\hat{f}\
+           //\.\+/{\oplus}\
+           //\.\*/{\otimes}\
+           //\.\-/{\ominus}\
+           //\|\-S\b/{\,\vdash{}}\
+           //\|\-h\b/{\,\vdash{}}\
+           //\|\|\-S\b/{\,\Vdash{}}\
+           //!-->>([a-z]*)/\;{\longmapsto^{\!*}_\textsf{\1}\;}\
+           //!-->([a-z]+)/\;{\longmapsto}_\textsf{\1}\;\
+           //-->>([a-z]+)/\;{\longrightarrow^{\!*}_\textsf{\1}\;}\
+           //-->([a-z]+)/\;{\longrightarrow}_\textsf{\1}\;\
+           //\s+at\s+/{\smallat}\
+           //gm"
+}
+
+.Floating,.Figure {
+  .align-center=clear;
+  text-align:left;
+}
+
+.SubFigureRow {
+  margin: 0;
+}
+
+.case {
+  before:clear;
+  before:"**Case** ";
+  display:block;
+  text-indent:-0.5ex;
+  margin:0.5ex 0ex;
+}
+
+.SubCase {
+  padding-left: 1em;
+}
+
+infer {
+  margin-top: .5em;
+  margin-bottom: 1em;
+}
+
+pre {
+  padding-left: 1em;
+}
+
+@html mathpre {
+  padding-left: 1em;
+}
+
+.internal {
+  background-color:#DDD;
+  padding:0.2ex 0ex;
+}
+
+.todo-style {
+  border-left: 3pt solid #EEE;
+  padding: 0.5ex 0.5em 0.5ex 0.5em;
+  margin: 1ex 0ex;
+  font-size: 90%;
+  background-color:#EAE8E8;
+  display: none;
+}
+
+@todo .todo-style {
+  display: block;
+}
+
+ul {
+  margin-left:-1.5em;
+}
+ol {
+  margin-left:0.5em;
+}
+
+todo { .todo-style }
+
+proof {
+  xbackground-color:gainsboro;
+}
+
+derive {
+  .mathpre;
+  .para-block;
+  input: mathpre;
+  replace: "/^([^\s]*)\s+/\rlap{\ensuremath{\1}}{\hspace*{2#em}} & /gm";
+}
+
+xderive {
+  .mathpre;
+  .para-block;
+  input: mathpre;
+  replace: "//^([^\s][^\s]*)\s+/\1 \;\; & \
+            //^\s+/ \quad & \
+            //gm";
+}
+
+tim {
+  .todo-style
+  before: "**Tim**. ";
+  border-left: 3pt solid green;
+}
+
+@html Figure {
+  border: 1px solid #ddd;
+  background-color: floralwhite;
+}
+
+@html Proof {
+  background: #eee;
+  padding-left: 0.5ex;
+}
+
+FigBlock {
+  display: block;
+  before: "**&caption;:**&medskip;&nl;{text-indent:-1ex}&nl;";
+  text-align:left;
+  margin-bottom: 0.5ex;
+  line-adjust:-3;
+  padding-left:1ex;
+}
+
+Case {
+  display: block
+  tight;
+  before: "**case** ";
+  text-indent: 0pt;
+  margin: 0pt;
+  padding: 0pt;
+}
+
+SubCase {
+  display: block
+  tight;
+  before: "**subcase** ";
+  text-indent: 0pt;
+  margin: 0pt;
+  padding: 0pt;
+}
+
+Css Header:
+    span.math-rendering {
+      display:inline-block;
+      width:8em;
+      overflow-x:auto;
+      font-size:70%;
+    }
+    span.math-rendering::-webkit-scrollbar {
+      width:4px;
+    }
+
+.toc { .sans-serif }
+
+@if not(@Extended) {
+  Extended {
+    display:none;
+  }
+}
+
+Extended {
+  .para-end;
+}
+
+@html .token.type.keyword {
+  color: blue;
+}
+
+@tex pre,.code1,.code2,.code3 {
+  font-size:80%;
+}
+@tex pre {
+  text-indent:0pt;
+}
+@tight pre {
+  font-size:75%;
+}
+
+Snippet {
+  margin-top: 1ex;
+  margin-bottom: 1ex;
+}
+
+
+.TROnly {
+  display: none;
+}
+@TechReport .TROnly {
+  display: block;
+  .para-end;
+  text-indent:1em;
+}
+@TechReport .SubmitOnly {
+  display: none;
+}
+
+@if @TechReport {
+  Logo      : True
+  xAcm Format: sigplan,10pt,nonacm
+  Conference      : &TechNR;
+  Conference Short: &TechNR;
+  Conference Date : Jul 10
+  Conference Year : 2023
+  Conference Location:
+}
+
+@TechReport Tex Header*:
+    \iftoggle{/madoko/math}{}{%
+      \long\def\footnotetextauthorsaddresses#1{}
+      \long\def\footnotetextcopyrightpermission#1{}
+      \settopmatter{printccs=false,printacmref=false,printfolios=false}
+      \fancypagestyle{firstpagestyle}{%
+        \fancyhf{}%
+        \renewcommand{\headrulewidth}{0pt}%
+        \renewcommand{\footrulewidth}{0pt}%
+        \fancyfoot[RO,LE]{\small\thepage}%
+      }
+      \fancypagestyle{standardpagestyle}{%
+        \fancyhf{}%
+        \renewcommand{\headrulewidth}{0pt}%
+        \renewcommand{\footrulewidth}{0pt}%
+        %\fancyhead[RO]{\@shortauthors}%
+        %\fancyhead[LE]{\titlerunning}%
+        %\fancyfoot[RO,LE]{\small\thepage}%
+        \fancyfoot[C]{\small\thepage}%
+      }
+      \pagestyle{standardpagestyle}
+      \textheight\dimexpr\textheight+5mm\relax
+    }
+
+
+Tex Doc Header*:
+    \setlength\textfloatsep{0.5\textfloatsep}
+    \setlength\floatsep{0.5\floatsep}
+    \abovedisplayskip=0.75\abovedisplayskip
+    \belowdisplayskip=\abovedisplayskip
+    \abovedisplayshortskip=\abovedisplayskip
+    \belowdisplayshortskip=\abovedisplayshortskip
+    \parskip=0pt
+    \widowpenalty=0
+    \displaywidowpenalty=0
+    \clubpenalty=0
+    %\setlength\mathindent{1em}
+    \hypersetup{bookmarksdepth=3,bookmarksopenlevel=1}%,colorlinks=true,linkcolor=navy,urlcolor=blue,filecolor=maroon}
+
+@anon Tex Doc Header*:
+    \iftoggle{/madoko/math}{}{%
+       \settopmatter{printccs=false,printacmref=false}%,printfolios=false}
+    }
+
+@tight Tex Doc Header*:
+    \setlength\mdpreskip{-0.1ex}
+    \makeatletter
+      \renewcommand\section{\@startsection{section}{1}{\z@}%
+        {-.25\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+        {.15\baselineskip}%
+        {\ACM@NRadjust\@secfont}}
+      \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+        {-.15\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+        {.10\baselineskip}%
+        {\ACM@NRadjust\@subsecfont}}
+      \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+        {-.15\baselineskip \@plus -1\p@ \@minus -.2\p@}%
+        {-2\p@}%
+        {\ACM@NRadjust{\@subsubsecfont\@adddotafter}}}
+      \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+        {0\p@}%
+        {-3.5\p@}%
+        {\ACM@NRadjust{\itshape\noindent\@adddotafter}}}
+    \makeatother
