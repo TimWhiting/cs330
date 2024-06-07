@@ -138,26 +138,71 @@ prelinecorrection: [\setlength\preadjust{0.1em}]{input:texraw}
 
 # Introduction
 
-So you want to learn about programming languages?
+Fall 2024 - CS 330 - Programming Languages
 
 This semester you will learn:
 
 * How to write in a functional style
 * Fundamentals of programming languages (Build a language!)
-* Several features of modern programming languages
+* Some unique features of different programming languages
+
+## Expectations and designs for the class
+
+### Expectations
+
+* Watch video tutorials for the project before class
+* Glance at the project requirements before class
+* Participate in class discussions
+* Come to me or the TA for tangential questions that might take awhile if you want to spend the class time learning new languages
+* Don't let me move on if you don't understand something fundamental
+* Keep asking questions until you understand
+* Be vocal about when you do understand, so I know to move on and not bore you to death
+
+### Designs
+
+#### Option 1
+
+* Tuesday: Working in class on project, answering questions about the project
+* Thursday: Lecture on a unique programming language feature
+
+Pros: 
+
+* You get to work on the project in class, and get help from the instructor
+
+Cons: 
+
+* TA gets fewer opportunities to help you and explain things differently from the instructor
+* Your time is spent on a project which has many resources online, and less on learning unique things that are harder or more spread out online
+* You don't get to practice or use the new programming languages concepts in action
+
+#### Option 2
+
+* Tuesday: Spend the first half answering questions about the project, second half introducing a unique programming language feature
+* Thursday: Do some basic exercises in a new programming language, to practically apply the concepts you learn
+
+Pros: 
+
+* You can ask the TAs and teacher for help on the project, and the TA can spend more time to help you debug specific issues
+* You get to practice and use the new programming languages concepts, not just build an interpreter
+
+Cons: 
+
+* You need to spend more time on your own for the project - just like other classes
+* Towards the end of the class we might take more time on Tuesdays for the project sincer there will probably be more questions
+
+
+#### Alternatives
+
+???
 
 ## Schedule
 
-On Tuesdays we will be focused on understanding fundamentals of programming languages.
+Here is what a minimal schedule for optional 1 would look like:
+We only cover about 6 new programming languages, and might only cover 1 or 2 of their unique features.
 
-We will be building an interpreter for the "BYU" programming language.
-
-On Thursdays we will be looking at modern programming languages and their features.
-
-
-+--------------------+-------------------+-----------------------+--------------------+-------------------+-----------------------+
++--------------------+-------------------+---------------------+--------------------+-------------------+-----------------------+
 | Tuesday   | Topic |  Assignment| Thursday  | Topic |  Assignment   |
-+--------------------+-------------------+---------------------------+--------------------+-------------------+---------------------------+
++--------------------+-------------------+---------------------+--------------------+-------------------+-----------------------+
 | N/A  | | | Sept 5th  | Syllabus / Intro  | |
 +---+---+---+---+---+---+
 | Sept 10th | FP Lists / HOF | | Sept 12th | FP ADTs | |
