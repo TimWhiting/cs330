@@ -203,15 +203,15 @@ We only cover about 6 new programming languages, and might only cover 1 or 2 of 
 +--------------------+-------------------+---------------------+--------------------+-------------------+-----------------------+
 | Tuesday   | Topic |  Assignment| Thursday  | Topic |  Assignment   |
 +--------------------+-------------------+---------------------+--------------------+-------------------+-----------------------+
-| N/A  | | | Sept 5th  | Syllabus / Intro  | |
+| N/A  | | | Sept 5th  | Syllabus / Intro to FP | |
 +---+---+---+---+---+---+
 | Sept 10th | FP Lists / HOF | | Sept 12th | FP ADTs | |
 +---+---+---+---+---+---+
-| Sept 17th | FP Extras | | Sept 19th | JS - Dynamic Types | |
+| Sept 17th | Writing a Parser & Evaluating Expressions | | Sept 19th | JS - Dynamic Types | |
 +---+---+---+---+---+---+
-| Sept 24th | Writing a Parser | | Sept 26th | TS - Gradual Typing | |
+| Sept 24th |  | | Sept 26th | TS - Gradual Typing | |
 +---+---+---+---+---+---+
-| Oct 1st | Evaluating Expressions | | Oct 3rd | Dart - Strong Typing | |
+| Oct 1st |  | | Oct 3rd | Dart - Strong Typing | |
 +---+---+---+---+---+---+
 | Oct 8th | Evaluating Functions | | Oct 10th | Rust - Memory Management | |
 +---+---+---+---+---+---+
