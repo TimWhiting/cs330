@@ -158,39 +158,6 @@ This semester you will learn:
 * Keep asking questions until you understand
 * Be vocal about when you do understand, so I know to move on and not bore you to death
 
-### Designs
-
-#### Option 1
-
-* Tuesday: Working in class on project, answering questions about the project
-* Thursday: Lecture on a unique programming language feature
-
-Pros: 
-
-* You get to work on the project in class, and get help from the instructor
-
-Cons: 
-
-* TA gets fewer opportunities to help you and explain things differently from the instructor
-* Your time is spent on a project which has many resources online, and less on learning unique things that are harder or more spread out online
-* You don't get to practice or use the new programming languages concepts in action
-
-#### Option 2
-
-* Tuesday: Spend the first half answering questions about the project, second half introducing a unique programming language feature
-* Thursday: Do some basic exercises in a new programming language, to practically apply the concepts you learn
-
-Pros: 
-
-* You can ask the TAs and teacher for help on the project, and the TA can spend more time to help you debug specific issues
-* You get to practice and use the new programming languages concepts, not just build an interpreter
-
-Cons: 
-
-* You need to spend more time on your own for the project - just like other classes
-* Towards the end of the class we might take more time on Tuesdays for the project sincer there will probably be more questions
-
-
 #### Alternatives
 
 ???
@@ -205,56 +172,71 @@ We only cover about 6 new programming languages, and might only cover 1 or 2 of 
 +--------------------+-------------------+---------------------+--------------------+-------------------+-----------------------+
 | N/A  | | | Sept 5th  | Syllabus / Intro to FP | |
 +---+---+---+---+---+---+
-| Sept 10th | FP Lists / HOF | | Sept 12th | FP ADTs | |
+| Sept 10th | HtDP | | Sept 12th | Interp | |
 +---+---+---+---+---+---+
-| Sept 17th | Writing a Parser & Evaluating Expressions | | Sept 19th | JS - Dynamic Types | |
+| Sept 17th | Functions/Substitution | | Sept 19th | JS - Dynamic Types | |
 +---+---+---+---+---+---+
-| Sept 24th |  | | Sept 26th | TS - Gradual Typing | |
+| Sept 24th | Binding/Environments | | Sept 26th | TS - Gradual Typing | |
 +---+---+---+---+---+---+
-| Oct 1st |  | | Oct 3rd | Dart - Strong Typing | |
+| Oct 1st | Lambdas | | Oct 3rd | Dart - Strong Typing & Null Safety | |
 +---+---+---+---+---+---+
-| Oct 8th | Evaluating Functions | | Oct 10th | Rust - Memory Management | |
+| Oct 8th | State/Store | | Oct 10th | Rust - Memory Management | |
 +---+---+---+---+---+---+
-| Oct 15th | Dynamic Scope | | Oct 17th | Scheme - Macros | |
+| Oct 15th | Records/Variables | | Oct 17th | Scheme - Macros | |
 +---+---+---+---+---+---+
-| Oct 22nd | Static Scope Binding | | Oct 24th | Haskell - Laziness | |
+| Oct 22nd | Encoding / Recursion | | Oct 24th | Haskell - Intro | |
 +---+---+---+---+---+---+
-| Oct 29th | Evaluating Loops | | Oct 31st | Haskell - Monads | |
+| Oct 29th | Lazy | | Oct 31st | Haskell - Laziness | |
 +---+---+---+---+---+---+
-| Nov 5th | Implementing State | | Nov 7th | Haskell - ?? | |
+| Nov 5th | Continuations / Control | | Nov 7th | Haskell - Monads & Typeclasses | |
 +---+---+---+---+---+---+
-| Nov 12th | Desugaring Objects | | Nov 14th | Prolog - Logic / Relational Programming | |
+| Nov 12th | Compilation / GC | | Nov 14th | Prolog - Logic / Relational Programming | |
 +---+---+---+---+---+---+
-| Nov 19th | Type Checking | | Nov 21st | Koka - Algebraic Effects | |
+| Nov 19th | Objects / Classes | | Nov 21st | Koka - Algebraic Effects | |
 +---+---+---+---+---+---+
-| Nov 26th | Implementing Control | | Nov 28th | Thanksgiving | |
+| Nov 26th | Types / Subtypes | | Nov 28th | Thanksgiving | |
 +---+---+---+---+---+---+
-| Dec 3rd | Implementing GC | | Dec 5th | Koka - Algebraic Effects | |
+| Dec 3rd | Type Inference & More | | Dec 5th | Koka - Reference Counting / FBIP | |
 +---+---+---+---+---+---+
-| Dec 10th | Implementing GC | | | | |
+| Dec 10th | Review | | | | |
 +---+---+---+---+---+---+
 
-
-## BYU language
-The BYU language is a simple programming language that will be used to demonstrate the concepts we learn in class.
-
-The syntax is as follows:
-~ mathpre
-X ::= x,y (identifiers)
-E ::= x | e0 op e1 | if e0 then e1 else e2 | while e0 do e1 | e0(e1, ..., en)
-~
 
 ## Functional Programming
 We will be adhering to a pure functional programming style for our implementations in this class.
 
-In particular this means that we will not be using mutable state.
+In particular this means that you will not be using mutable state to implement your interpreters.
 
 To get started with functional programming in Splait, please go through the following tutorials:
 
 * [Intro to Splait](https://www.youtube.com/watch?v=ZoWPZpqSYt4&list=PLbdXd8eufjyX42OdF_QnDf4w9NcvWPAZr)
 * [How to Design Programs](https://www.youtube.com/watch?v=-5Al4TfaZ94&list=PLbdXd8eufjyXyreOq06tSPhJi1u-dqb0p)
 
+Your project will be to create:
+- A simple interpreter for the lambda calculus, and a few primitives
+- Create variants of the interpreter to implement some other fundamental programming language concepts.
 
+You will come to class having watched the video introductions and tutorials to the basic concepts, and having attempted at least the first few exercises.
+We will cover more complex exercises in class, in pairs, groups, and working together as a class.
+This should solidify your understanding so that the homework and project should be easy.
+
+For Thursday classes, we will have a similar approach to class time, but we will be focused on learning some unique programming language features from a variety of languages.
+
+You will be expected to have watched the short videos explaining what you will be learning, and you will be expected to participate in class going over the exercises.
+
+My goal as a teacher is to: 
+- Help you understand the subtleties involved in programming language concepts and implementations
+- Help you understand how to design robust solutions to problems by adopting a functional and data first approach
+- Give you meaningful experience in a variety of programming languages
+- Give you a chance to think critically and defend your design decisions and ideas
+- Give you a chance to learn from and teach your peers difficult concepts
+- Spend time in class deepening knowledge in a way you can't get from online courses
+- Learn from you 
+
+## Outline for lessons
+
+### JS - Dynamic Types
+- What are types? A way to distinguish between different values.
 
 [BIB]
 
